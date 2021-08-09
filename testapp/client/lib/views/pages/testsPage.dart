@@ -11,7 +11,7 @@ class TestsPage extends StatelessWidget {
 
 // Methods
 
-  TestsPage({Key key}) : super(key: key);
+  TestsPage();
 
   @override
   Widget build(BuildContext context) {
@@ -55,16 +55,16 @@ class TestsPageView extends StatelessWidget {
             Chip(
               avatar: CircleAvatar(
                 backgroundColor: Colors.blue.shade800,
-                child: Text(vm.tests.items.length.toString()),
+                child: Text(vm.tests.items!.length.toString()),
               ),
               label: Text("Tests"),
             ),
             Padding(padding: EdgeInsetsDirectional.only(top: 8.0)),
             Expanded(
                 child: ListView.builder(
-                    itemCount: vm.tests.items.length,
+                    itemCount: vm.tests.items!.length,
                     itemBuilder: (BuildContext ctx, int index) =>
-                        _createTestItemView(vm.tests.items[index]))),
+                        _createTestItemView(vm.tests.items![index]))),
           ],
         ),
       )),

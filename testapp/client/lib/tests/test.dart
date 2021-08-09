@@ -18,22 +18,27 @@ abstract class Test extends ViewModel {
   static const String isExecutingPropName = "isExecuting";
   bool get isExecuting => _isExecuting;
   set isExecuting(bool value) {
-    updateValue(isExecutingPropName, _isExecuting, value, (v) => _isExecuting = v);
+    updateValue(isExecutingPropName, _isExecuting, value,
+        (v) => _isExecuting = v as bool);
   }
 
   String _errorMessage;
   static const String errorMessagePropName = "errorMessage";
   String get errorMessage => _errorMessage;
   set errorMessage(String value) {
-    updateValue(errorMessagePropName, _errorMessage, value, (v) => _errorMessage = v);
+    updateValue(errorMessagePropName, _errorMessage, value,
+        (v) => _errorMessage = v as String);
   }
 
   // Methods
 
-  Test(HubConnectionProvider hubConnectionProvider, Logger logger, String description)
+  Test(HubConnectionProvider hubConnectionProvider, Logger logger,
+      String description)
       : assert(hubConnectionProvider != null),
         assert(logger != null),
         assert(description != null),
+        _errorMessage = "",
+        _isExecuting = false,
         _hubConnectionProvider = hubConnectionProvider,
         this.logger = logger,
         description = description;
