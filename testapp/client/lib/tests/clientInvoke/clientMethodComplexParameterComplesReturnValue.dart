@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:client/tests/test.dart';
 import 'package:client/views/pages/testsPageViewModel.dart';
 import 'package:logging/logging.dart';
-import 'package:signalr_client/signalr_client.dart';
+import 'package:signalr_netcore/signalr_client.dart';
 
 class ClientMethodComplexParameterComplexReturnValue extends Test {
   // Properties
@@ -21,7 +21,8 @@ class ClientMethodComplexParameterComplexReturnValue extends Test {
     final jsonResult = await hubConnection.invoke(
         "MethodWithComplexParameterAndComplexReturnValue",
         args: <Object>[reqParam]);
-    var resultObj = ComplexReturnValue.fromJson(jsonResult);
+    var resultObj =
+        ComplexReturnValue.fromJson((jsonResult as List<dynamic>)[0]);
     logger.info("Result: '$resultObj");
   }
 }
@@ -31,8 +32,8 @@ class ComplexInParameter {
   String lastName;
 
   ComplexInParameter({
-    this.firstName,
-    this.lastName,
+    required this.firstName,
+    required this.lastName,
   });
 
   Map<String, dynamic> toJson() => {
@@ -46,7 +47,10 @@ class ComplexReturnValue {
   String lastName;
   String greetingText;
 
-  ComplexReturnValue({this.firstName, this.lastName, this.greetingText});
+  ComplexReturnValue(
+      {required this.firstName,
+      required this.lastName,
+      required this.greetingText});
 
   factory ComplexReturnValue.fromJson(Map<String, dynamic> json) {
     return ComplexReturnValue(

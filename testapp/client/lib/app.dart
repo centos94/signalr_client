@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 class App extends StatelessWidget {
   // Properties
 
-
   // Methods
-  App({Key key}) : super(key: key);
+  App();
 
   @override
   Widget build(BuildContext context) {
