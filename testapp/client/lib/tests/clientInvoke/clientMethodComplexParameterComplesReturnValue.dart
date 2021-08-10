@@ -22,7 +22,7 @@ class ClientMethodComplexParameterComplexReturnValue extends Test {
         "MethodWithComplexParameterAndComplexReturnValue",
         args: <Object>[reqParam]);
     var resultObj =
-        ComplexReturnValue.fromJson(jsonResult as Map<String, dynamic>);
+        ComplexReturnValue.fromJson((jsonResult as List<dynamic>)[0]);
     logger.info("Result: '$resultObj");
   }
 }
